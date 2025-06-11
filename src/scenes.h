@@ -3,8 +3,8 @@
 enum class Scenes 
 {
     MAIN_MENU,
-    MAP0
+    MAP0,
+    EXIT //stops the main while loop
 };
 
-// Declare the variable (accessible globally)
 extern Scenes currentScene;

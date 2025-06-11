@@ -54,6 +54,10 @@ void Menu::Button(Rectangle buttonRec, const char * text)
             {
                 currentScene = Scenes::MAP0;
             }
+            if (text == "Exit")
+            {
+                currentScene = Scenes::EXIT;
+            }
         }
     }
     else
