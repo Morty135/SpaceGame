@@ -3,21 +3,15 @@
 #include "raylib.h"
 #include "menu.h"
 #include "scenes.h"
+#include "map0.h"
 
 class Game
 {
 private:
-    Camera2D camera = { 0 };
-
-    typedef enum GameScene {mainMenu = 0, map1} GameScene;
-
     Menu menu;
-
-    Rectangle Rec;
+    Map0 map0;
 
 public:           
-    GameScene scene = mainMenu;
-
     Game();
     ~Game();
 
