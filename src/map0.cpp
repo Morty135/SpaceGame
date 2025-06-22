@@ -3,33 +3,41 @@
 Map0::Map0()
 {
     camera.target = (Vector2){ 0.0f, 0.0f };
-    //camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
+    camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
     camera.rotation = 0.0f;
-    camera.zoom = 1.0f;
-
-    Rec.height = 40;
-    Rec.width = 40;
+    camera.zoom = 2.0f;
 }
 
 void Map0::Update()
 {
-    Vector2 mousePos = GetWorldToScreen2D(GetMousePosition(),camera);
-    Rec.x = mousePos.x;
-    Rec.y = mousePos.y;
+    mousePos = GetScreenToWorld2D(GetMousePosition(), camera);
 
-    DrawRectangle(10,10,780,50,RAYWHITE);
-    DrawText(std::to_string(GetMousePosition().x).c_str(), 10, 10, 50, MAGENTA);
-    DrawText(std::to_string(GetMousePosition().y).c_str(), 400, 10, 50, MAGENTA);
+    if(IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+    {
+        shipTargetPos = mousePos;
+    }
+    shipPos = Vector2MoveTowards(shipPos, shipTargetPos, 5);
 
-    DrawRectangle(10,70,780,50,RAYWHITE);
-    DrawText(std::to_string(Rec.x).c_str(), 10, 70, 50, MAGENTA);
-    DrawText(std::to_string(Rec.y).c_str(), 400, 70, 50, MAGENTA);
+    float wheel = GetMouseWheelMove();
+    if (wheel != 0)
+    {
+        float scale = 0.05f*wheel;
+        camera.zoom = Clamp(expf(logf(camera.zoom)+scale), 1.0f, 7.0f);
+    }
+    camera.target = shipPos;
 }
 
 void Map0::Draw()
 {
+    DrawRectangle(0,0,GetScreenWidth(), GetScreenHeight(), DARKPURPLE);
     BeginMode2D(camera);
-        DrawRectangleRec(Rec, RED);
+        rlPushMatrix();
+            rlTranslatef(0, 25*50, 0);
+            rlRotatef(90, 1, 0, 0);
+            DrawGrid(100, 50);
+        rlPopMatrix();
+
+        DrawRectangleV(shipPos, {40, 40 }, LIME);
     EndMode2D();
 }
 

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "raylib.h"
+#include "rlgl.h"
+#include "raymath.h"
 #include <iostream>
 
 class Map0
@@ -8,7 +10,10 @@ class Map0
 private:
     Camera2D camera = { 0 };
 
-    Rectangle Rec;
+    Vector2 mousePos = {0};
+    Vector2 shipTarget = {0};
+    Vector2 shipTargetPos = {0};
+    Vector2 shipPos = {0};
 
 public:
     Map0();
