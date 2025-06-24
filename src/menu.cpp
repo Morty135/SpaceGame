@@ -22,18 +22,11 @@ Menu::Menu()
     exitRec.y = GetScreenHeight()*0.7f - buttonHeight*0.5;
 }
 
-/*
-enum Menu::ChangeScene(int scene)
-{
-
-}
-*/
 
 
 void Menu::Draw()
 {
     DrawTexture(background, 0,0, WHITE);
-    //playBtn
     Button(playRec, "Play");
     Button(settingsRec, "Settings");
     Button(exitRec, "Exit");
@@ -45,7 +38,6 @@ void Menu::Button(Rectangle buttonRec, const char * text)
 {
     if(CheckCollisionPointRec(GetMousePosition(), buttonRec))
     {
-        //DrawRectangleRec(playRec, RED);
         DrawText(text, buttonRec.x, buttonRec.y, buttonHeight +5, GRAY);
         if(IsMouseButtonDown(MOUSE_BUTTON_LEFT))
         {
@@ -62,7 +54,6 @@ void Menu::Button(Rectangle buttonRec, const char * text)
     }
     else
     {
-        //DrawRectangleRec(playRec, RED);
         DrawText(text, buttonRec.x, buttonRec.y, buttonHeight, LIGHTGRAY);
     }
 }

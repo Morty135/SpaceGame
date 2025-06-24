@@ -1,9 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-#include "rlgl.h"
 #include "raymath.h"
-#include <iostream>
 
 class Map0
 {
@@ -13,7 +11,10 @@ private:
     Vector2 mousePos = {0};
     Vector2 shipTarget = {0};
     Vector2 shipTargetPos = {0};
-    Vector2 shipPos = {0};
+    Vector2 shipPos = {0, 0};
+
+    Texture2D background;
+    Texture2D gate1;
 
 public:
     Map0();

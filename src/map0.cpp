@@ -6,6 +6,14 @@ Map0::Map0()
     camera.offset = (Vector2){ GetScreenWidth()/2.0f, GetScreenHeight()/2.0f };
     camera.rotation = 0.0f;
     camera.zoom = 2.0f;
+
+    background = LoadTexture("resources/map0/background.png");
+    background.width = GetScreenWidth()*2;
+    background.height = GetScreenHeight()*2;
+
+    gate1 = LoadTexture("resources/map0/Gate.png");
+    gate1.width = gate1.width*4;
+    gate1.height = gate1.height*4;
 }
 
 void Map0::Update()
@@ -29,19 +37,21 @@ void Map0::Update()
 
 void Map0::Draw()
 {
-    DrawRectangle(0,0,GetScreenWidth(), GetScreenHeight(), DARKPURPLE);
+    ClearBackground({23,9,12,255});
+
     BeginMode2D(camera);
-        rlPushMatrix();
-            rlTranslatef(0, 25*50, 0);
-            rlRotatef(90, 1, 0, 0);
-            DrawGrid(100, 50);
-        rlPopMatrix();
+
+        DrawTexture(background, shipPos.x * 0.5f , shipPos.y * 0.5f, WHITE);
+
+        DrawTexture(gate1,1920 , 1080, WHITE);
 
         DrawRectangleV(shipPos, {40, 40 }, LIME);
+
     EndMode2D();
 }
 
 Map0::~Map0() 
 {
-
+    UnloadTexture(gate1);
+    UnloadTexture(background);
 }
