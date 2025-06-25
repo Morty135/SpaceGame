@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+
 enum class Scenes 
 {
     MAIN_MENU,

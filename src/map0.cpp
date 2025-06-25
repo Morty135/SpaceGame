@@ -8,8 +8,8 @@ Map0::Map0()
     camera.zoom = 2.0f;
 
     background = LoadTexture("resources/map0/background.png");
-    background.width = GetScreenWidth()*2;
-    background.height = GetScreenHeight()*2;
+    background.width = 1920*2;
+    background.height = 1080*2;
 
     gate1 = LoadTexture("resources/map0/Gate.png");
     gate1.width = gate1.width*4;

@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 #include "menu.h"
-#include "scenes.h"
+#include "gameState.h"
 #include "map0.h"
 
 class Game

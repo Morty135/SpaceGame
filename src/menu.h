@@ -1,7 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-#include "scenes.h"
+#include "gameState.h"
 
 class Menu
 {
