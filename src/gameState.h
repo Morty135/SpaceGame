@@ -11,3 +11,13 @@ enum class Scenes
 };
 
 extern Scenes currentScene;
+
+
+
+class GameState
+{
+    public:
+        void SaveGame();
+
+        void LoadGame();
+};
