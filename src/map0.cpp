@@ -48,6 +48,8 @@ void Map0::Draw()
         DrawRectangleV(shipPos, {40, 40 }, LIME);
 
     EndMode2D();
+
+    pauseMenu.Draw();
 }
 
 Map0::~Map0() 

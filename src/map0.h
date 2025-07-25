@@ -3,6 +3,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
+#include "pauseMenu.h"
+
 class Map0
 {
 private:
@@ -16,6 +18,7 @@ private:
     Texture2D background;
     Texture2D gate1;
 
+    PauseMenu pauseMenu;
 public:
     Map0();
     ~Map0();
