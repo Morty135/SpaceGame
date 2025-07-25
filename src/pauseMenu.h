@@ -14,5 +14,5 @@ public:
 
     void Draw();
 
-    void TextButton(Vector2 position, int size, const char * text);
+    void TextButton(Vector2 position, int size, const char * text, void (*func)() = nullptr);
 };

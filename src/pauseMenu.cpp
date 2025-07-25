@@ -20,17 +20,30 @@ void PauseMenu::Draw()
     }
     if(isPaused == true)
     {
-        DrawRectangle(GetScreenWidth()*0.33f,0,GetScreenWidth()*0.33f, GetScreenHeight(), BLACK);
-        TextButton({0,0}, 10, "Hello");
+        DrawRectangle(GetScreenWidth()*0.35f,0,GetScreenWidth()*0.3f, GetScreenHeight(), BLACK);
+        DrawText("Quick Menu", GetScreenWidth()*0.5f - MeasureText("Quick Menu", 60)*0.5f, 30, 60, GRAY);
+        TextButton({GetScreenWidth()*0.5f,150}, 50, "Save");
+        TextButton({GetScreenWidth()*0.5f,250}, 50, "Load");
+        TextButton({GetScreenWidth()*0.5f,350}, 50, "Menu");
 
     }
 }
 
-void PauseMenu::TextButton(Vector2 position, int size, const char * text)
+void PauseMenu::TextButton(Vector2 position, int size, const char * text, void (*func)())
 {
     int width = MeasureText(text, size);
-    DrawRectangle(position.x, position.y, width, size, RAYWHITE);
-    DrawText(text, position.x, position.y, size, GRAY);
+    Rectangle Rec = {position.x - width*0.5f, position.y, width, size};
+    //DrawRectangleRec(Rec, {RAYWHITE});
+
+    if(CheckCollisionPointRec(GetMousePosition(), Rec))
+    {
+        DrawText(text, position.x - width*0.5f, position.y, size, GRAY);
+    }
+    else
+    {
+        DrawText(text, position.x - width*0.5f, position.y, size, LIGHTGRAY);
+    }
+
 }
 
 PauseMenu::~PauseMenu()
