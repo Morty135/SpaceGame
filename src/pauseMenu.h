@@ -8,11 +8,14 @@ class PauseMenu
 private:
     bool isPaused = false;
 
+    void CloseMenu();
+    void ReturnToMainMenu();
+
 public:
     PauseMenu();
     ~PauseMenu();
 
     void Draw();
 
-    void TextButton(Vector2 position, int size, const char * text, void (*func)() = nullptr);
+    void TextButton(Vector2 position, int size, const char * text, void (PauseMenu::*func)() = nullptr);
 };
